@@ -1,1 +1,1 @@
-from installer import PackageInstaller
+from installer.py import PackageInstaller
