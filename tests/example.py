@@ -1,15 +1,15 @@
-# tests/example.py
-import unittest
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from pakman import PackageInstaller
 
-from pakman.installer import PackageInstaller
+# List of packages you want to install
+required_packages = ['requests']
 
-class TestPackageInstaller(unittest.TestCase):
-    def test_installer(self):
-        installer = PackageInstaller(["requests"])
-        self.assertIsInstance(installer, PackageInstaller)
+# Initialize the installer
+installer = PackageInstaller(required_packages)
 
-if __name__ == "__main__":
-    unittest.main()
+# Run the installer to check and install missing packages
+installer.runInstaller()
+
+# Once installed, you can import the packages as usual
+import requests
+
+print("All required packages have been installed and ready to use!")
