@@ -9,13 +9,13 @@ class PackageInstaller:
         """
         self.packages = packages
 
-    def install(self, package):
-        """
-        param package: The name of the package to install.
-        """
+    def install(self, package, verbose=False):
         print(f"Installing/Upgrading {package}...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", package], 
-                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        args = [sys.executable, "-m", "pip", "install", "--upgrade", package]
+        if verbose:
+            subprocess.run(args)
+        else:
+            subprocess.run(args, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     def isInstalled(self, package):
         """
@@ -23,10 +23,10 @@ class PackageInstaller:
         """
         return importlib.util.find_spec(package) is not None
 
-    def runInstaller(self):
+    def runInstaller(self, verbose=False):
         """
         Checks if each package is installed, and installs it if not.
         """
         for package in self.packages:
             if not self.isInstalled(package):
-                self.install(package)
+                self.install(package, verbose)
