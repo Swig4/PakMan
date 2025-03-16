@@ -1,3 +1,3 @@
-from .installer import PackageInstaller
+from .installer import isInstalled, install, runInstaller
 
 # Hello from PakMan!
