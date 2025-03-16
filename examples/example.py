@@ -3,20 +3,17 @@ from pakman import PackageInstaller
 # List of packages you want to install
 requiredPackages = ['requests']
 
-# Initialize the installer with a list of packages
-installer = PackageInstaller(requiredPackages)
-
 # Run the installer for the list of packages in verbose mode (shows output)
 print("Running installer for multiple packages in verbose mode...")
-installer.runInstaller(verbose=True)
+PackageInstaller.runInstaller(requiredPackages, verbose=True)
 
 # Run the installer for the list of packages in silent mode (hides output)
 print("\nRunning installer for multiple packages in silent mode...")
-installer.runInstaller(verbose=False)
+PackageInstaller.runInstaller(requiredPackages, verbose=False)
 
 # Install a single package using the install method
 print("\nInstalling a single package in verbose mode...")
-installer.install('numpy', verbose=True)
+PackageInstaller.install('numpy', verbose=True)
 
 # Once installed, you can import the packages as usual
 import requests
